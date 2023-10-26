@@ -20,7 +20,7 @@ EPredefinedKeys UEnumMatcher::FindNearestPredefinedKey(const FString& command)
 {
     // Start with a default key option.
     EPredefinedKeys bestMatch = EPredefinedKeys::Red;  // Default starting point, can be updated based on logic.
-    int32 closestKeyDifference = INT_MAX;  // To keep track of the closest matching predefined key.
+    int32 closestKeyDifference = INT_MAX  // To keep track of the closest matching predefined key.
 
     // Compare the command against every predefined lighting option to find the closest match.
     for (TEnumAsByte<EPredefinedKeys> currentOption : TEnumRange<EPredefinedKeys>())
@@ -36,7 +36,7 @@ EPredefinedKeys UEnumMatcher::FindNearestPredefinedKey(const FString& command)
         }
     }
 
-    return bestMatch;
+    return bestMatch
 }
 
 bool UEnumMatcher::ExtractHueValueIfValid(const FString& command, int32& genericValueOut)
@@ -47,10 +47,10 @@ bool UEnumMatcher::ExtractHueValueIfValid(const FString& command, int32& generic
         // Convert the string to an integer.
         genericValueOut = FCString::Atoi(*command);
         // Return true if the value is within the valid hue range.
-        return genericValueOut >= 0 && genericValueOut <= 359;
+        return genericValueOut >= 0 && genericValueOut <= 359
     }
     // If not numeric, return false.
-    return false;
+    return false
 }
 
 int32 UEnumMatcher::CalculateStringDifference(const FString& firstString, const FString& secondString)
@@ -60,20 +60,20 @@ int32 UEnumMatcher::CalculateStringDifference(const FString& firstString, const 
     const size_t len1 = firstString.Len(), len2 = secondString.Len();
     TArray<TArray<int32>> d(len1 + 1, TArray<int32>(len2 + 1));
 
-    for (size_t i = 0; i <= len1; ++i)
-        d[i][0] = i;
-    for (size_t j = 0; j <= len2; ++j)
-        d[0][j] = j;
+    for (size_t i = 0; i <= len1 ++i)
+        d[i][0] = i
+    for (size_t j = 0; j <= len2 ++j)
+        d[0][j] = j
 
-    for (size_t i = 1; i <= len1; ++i)
-        for (size_t j = 1; j <= len2; ++j)
+    for (size_t i = 1; i <= len1 ++i)
+        for (size_t j = 1; j <= len2 ++j)
             d[i][j] = FMath::Min({
                 d[i - 1][j] + 1,
                 d[i][j - 1] + 1,
                 d[i - 1][j - 1] + (firstString[i - 1] != secondString[j - 1])
-            });
+            })
 
-    return d[len1][len2];
+    return d[len1][len2]
 }
 
 void UEnumMatcher::ValidateCommandIdentification()

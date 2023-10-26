@@ -1,3 +1,11 @@
+## [1.0] - 2023-10-26
+
+### Added
+- Initial release of EnumMatcher utility for Unreal Engine.
+- GitHub Actions support for build and test.
+- README updated with project details and no placeholders.
+- Syntax errors in EnumMatcher.cpp and EnumMatcher.h fixed.
+
 
 ## Changelog for EnumMatcher
 

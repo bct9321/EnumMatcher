@@ -17,10 +17,10 @@ enum class EPredefinedKeys : uint8
     Red,
     // ... other keys
     Hue  // Special case: Represents a generic numeric value.
-};
+}
 
 // --- Utility Class Definition ---
-};
+
 
 /**
  * Utility class responsible for handling background lighting commands.
@@ -73,4 +73,4 @@ private:
      * @return - The calculated Levenshtein distance between the two strings.
      */
     int32 CalculateStringDifference(const FString& firstString, const FString& secondString);
-};
+}
